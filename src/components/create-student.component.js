@@ -17,6 +17,8 @@ export default class CreateStudent extends Component {
       motherName: '',
       address: '',
       contactNumber: '',
+      canDisplayView: false,
+      isError: false,
       alertVariant: 'none',
       alertMsg: '',
     }
@@ -98,7 +100,7 @@ export default class CreateStudent extends Component {
       contactNumber
     };
 
-    if (name === '' || rollno === '' || dateOfBirth === '' || level === '' || section ==='' || gender==='' || fatherName==='' || motherName === '' || contactNumber ===''|| address==='') {
+    if (name === '' || rollno === '' || dateOfBirth === '' || level === '' || section === '' || gender=== '' || fatherName=== '' || motherName === '' || contactNumber === ''|| address=== '') {
       this.setState({
         alertVariant: 'danger',
         alertMsg: 'All field are required',
