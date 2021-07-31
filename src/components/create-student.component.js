@@ -22,6 +22,13 @@ export default class CreateStudent extends Component {
     }
   }
 
+  handleStudentNameChange = (evt) => {
+    this.setState({
+      name: evt.target.value,
+    })
+  }
+
+
   handleStudentRollnoChange = (evt) => {
     this.setState({
       rollno: evt.target.value,
