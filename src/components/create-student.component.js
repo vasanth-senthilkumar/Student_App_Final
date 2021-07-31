@@ -104,7 +104,7 @@ export default class CreateStudent extends Component {
         alertMsg: 'All field are required',
       })
     } else {
-      axios.post('/students/create-student', data)
+      axios.post('https://fierce-dusk-60690.herokuapp.com/students/create-student', data)
         .then((res) => {
           console.log(res.data);
           this.setState({
@@ -126,8 +126,15 @@ export default class CreateStudent extends Component {
   resetFormValue = () => {
     this.setState({
       name: '',
-      email: '',
-      rollno: ''
+      rollno: '',
+      dateOfBirth:'',
+      level: '',
+      section: '',
+      gender: '',
+      fatherName:'',
+      motherName:'',
+      address:'',
+      contactNumber: ''
     })
   }
 
@@ -235,7 +242,7 @@ export default class CreateStudent extends Component {
             <Form.Control type="text" placeholder="Valid Contact Number" value={contactNumber} min='0' onChange={(evt) => this.handleStudentcontactNumberChange(evt)} />
           </Form.Group>
           <br/>
-          
+
           <Button variant="danger" size="lg" block="block" onClick={(evt) => this.handleSubmitDetails(evt)}>
             Create Student
           </Button>
