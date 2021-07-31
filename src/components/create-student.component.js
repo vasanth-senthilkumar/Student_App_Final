@@ -9,25 +9,18 @@ export default class CreateStudent extends Component {
     this.state = {
       name: '',
       rollno: '',
-      dateOfBirth:'',
+      dateOfBirth: '',
       level: '',
       section: '',
       gender: '',
-      fatherName:'',
-      motherName:'',
-      address:'',
+      fatherName: '',
+      motherName: '',
+      address: '',
       contactNumber: '',
       alertVariant: 'none',
       alertMsg: '',
     }
   }
-
-  handleStudentNameChange = (evt) => {
-    this.setState({
-      name: evt.target.value,
-    })
-  }
-
 
   handleStudentRollnoChange = (evt) => {
     this.setState({
@@ -84,7 +77,7 @@ export default class CreateStudent extends Component {
   }
 
   handleSubmitDetails = () => {
-    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, address, contactNumber } = this.state;
+    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, address, contactNumber  } = this.state;
     const data = {
       name,
       rollno,
@@ -98,13 +91,13 @@ export default class CreateStudent extends Component {
       contactNumber
     };
 
-    if (name === '' || rollno === ''||dateOfBirth===''||level===''||section===''||gender===''||fatherName===''||motherName===''||address===''||contactNumber==='') {
+    if (name === '' || rollno === '' || dateOfBirth === '' || level === '' || section ==='' || gender==='' || fatherName==='' || motherName === '' || contactNumber ===''|| address==='') {
       this.setState({
         alertVariant: 'danger',
         alertMsg: 'All field are required',
       })
     } else {
-      axios.post(' https://fierce-dusk-60690.herokuapp.com/students/create-student', data)
+      axios.post('https://fierce-dusk-60690.herokuapp.com/students/create-student', data)
         .then((res) => {
           console.log(res.data);
           this.setState({
@@ -127,14 +120,14 @@ export default class CreateStudent extends Component {
     this.setState({
       name: '',
       rollno: '',
-      dateOfBirth:'',
+      dateOfBirth: '',
       level: '',
       section: '',
       gender: '',
       fatherName:'',
       motherName:'',
-      address:'',
-      contactNumber: ''
+      contactNumber: '',
+      address: ''
     })
   }
 
@@ -146,7 +139,7 @@ export default class CreateStudent extends Component {
   }
 
   render() {
-    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, address, contactNumber, alertVariant, alertMsg } = this.state;
+    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, contactNumber, address, alertVariant, alertMsg } = this.state;
     return (
       <div className="student-create-wapper">
         <h1> Create student list</h1>
@@ -161,7 +154,7 @@ export default class CreateStudent extends Component {
 
           <Form.Group controlId="Roll No">
             <Form.Label>Roll No</Form.Label>
-            <Form.Control type="text" placeholder="Enter Your Roll No" value={rollno}  onChange={(evt) => this.handleStudentRollnoChange(evt)} />
+            <Form.Control type="text" placeholder="Enter Your Roll No" value={rollno} min='0' onChange={(evt) => this.handleStudentRollnoChange(evt)} />
           </Form.Group>
 
             <Form.Group controlId="DOB">
@@ -224,22 +217,22 @@ export default class CreateStudent extends Component {
 
           <Form.Group controlId="Name">
             <Form.Label>Father Name</Form.Label>
-            <Form.Control type="text" placeholder="Father Name" value={fatherName} onChange={(evt) => this.handleStudentfatherNameChange(evt)} />
+            <Form.Control type="text" placeholder="Father Name" value={fatherName} min='0' onChange={(evt) => this.handleStudentfatherNameChange(evt)} />
           </Form.Group>
 
           <Form.Group controlId="Name">
             <Form.Label>Mother Name</Form.Label>
-            <Form.Control type="text" placeholder="Mother Name" value={motherName} onChange={(evt) => this.handleStudentmotherNameChange(evt)} />
+            <Form.Control type="text" placeholder="Mother Name" value={motherName} min='0' onChange={(evt) => this.handleStudentmotherNameChange(evt)} />
           </Form.Group>
 
           <Form.Group controlId="Address">
             <Form.Label>Address</Form.Label>
-            <Form.Control type="text" placeholder="Address Here" value={address} onChange={(evt) => this.handleStudentaddressChange(evt)} />
+            <Form.Control type="text" placeholder="Address Here" value={address} min='0' onChange={(evt) => this.handleStudentaddressChange(evt)} />
           </Form.Group>
 
           <Form.Group controlId="Number">
             <Form.Label>Contact Number</Form.Label>
-            <Form.Control type="text" placeholder="Valid Contact Number" value={contactNumber} onChange={(evt) => this.handleStudentcontactNumberChange(evt)} />
+            <Form.Control type="text" placeholder="Valid Contact Number" value={contactNumber} min='0' onChange={(evt) => this.handleStudentcontactNumberChange(evt)} />
           </Form.Group>
           <br/>
 
