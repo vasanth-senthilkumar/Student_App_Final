@@ -9,16 +9,14 @@ export default class CreateStudent extends Component {
     this.state = {
       name: '',
       rollno: '',
-      dateOfBirth: '',
+      dateOfBirth:'',
       level: '',
       section: '',
       gender: '',
-      fatherName: '',
-      motherName: '',
-      address: '',
+      fatherName:'',
+      motherName:'',
+      address:'',
       contactNumber: '',
-      canDisplayView: false,
-      isError: false,
       alertVariant: 'none',
       alertMsg: '',
     }
@@ -86,7 +84,7 @@ export default class CreateStudent extends Component {
   }
 
   handleSubmitDetails = () => {
-    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, address, contactNumber  } = this.state;
+    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, address, contactNumber } = this.state;
     const data = {
       name,
       rollno,
@@ -100,13 +98,13 @@ export default class CreateStudent extends Component {
       contactNumber
     };
 
-    if (name === '' || rollno === '' || dateOfBirth === '' || level === '' || section === '' || gender=== '' || fatherName=== '' || motherName === '' || contactNumber === ''|| address=== '') {
+    if (name === '' || rollno === ''||dateOfBirth===''||level===''||section===''||gender===''||fatherName===''||motherName===''||address===''||contactNumber==='') {
       this.setState({
         alertVariant: 'danger',
         alertMsg: 'All field are required',
       })
     } else {
-      axios.post('https://fierce-dusk-60690.herokuapp.com/students/create-student', data)
+      axios.post('/students/create-student', data)
         .then((res) => {
           console.log(res.data);
           this.setState({
@@ -128,15 +126,8 @@ export default class CreateStudent extends Component {
   resetFormValue = () => {
     this.setState({
       name: '',
-      rollno: '',
-      dateOfBirth: '',
-      level: '',
-      section: '',
-      gender: '',
-      fatherName:'',
-      motherName:'',
-      contactNumber: '',
-      address: ''
+      email: '',
+      rollno: ''
     })
   }
 
@@ -148,7 +139,7 @@ export default class CreateStudent extends Component {
   }
 
   render() {
-    const { name, rollno, dateOfBirth, level, section, gender, fatherName, motherName, contactNumber, address, alertVariant, alertMsg } = this.state;
+    const { name, rollno,dateOfBirth, level, section, gender, fatherName, motherName, address, contactNumber, alertVariant, alertMsg } = this.state;
     return (
       <div className="student-create-wapper">
         <h1> Create student list</h1>
@@ -244,8 +235,8 @@ export default class CreateStudent extends Component {
             <Form.Control type="text" placeholder="Valid Contact Number" value={contactNumber} min='0' onChange={(evt) => this.handleStudentcontactNumberChange(evt)} />
           </Form.Group>
           <br/>
-
-          <Button variant="success" size="lg" block="block" onClick={(evt) => this.handleSubmitDetails(evt)}>
+          
+          <Button variant="danger" size="lg" block="block" onClick={(evt) => this.handleSubmitDetails(evt)}>
             Create Student
           </Button>
         </Form>
@@ -253,12 +244,3 @@ export default class CreateStudent extends Component {
     );
   }
 }
-
-
-
-
-
-
-
-
-
