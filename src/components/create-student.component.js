@@ -243,7 +243,7 @@ export default class CreateStudent extends Component {
           </Form.Group>
           <br/>
 
-          <Button variant="danger" size="lg" block="block" onClick={(evt) => this.handleSubmitDetails(evt)}>
+          <Button variant="success" size="lg" block="block" onClick={(evt) => this.handleSubmitDetails(evt)}>
             Create Student
           </Button>
         </Form>
